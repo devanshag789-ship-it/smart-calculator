@@ -45,23 +45,29 @@ def evaluate_expression(expression):
     return calculate(tree.body)
 
 
-while True:
-    expression = input("\nEnter expression: ").strip()
 
-    if expression.lower() == "exit":
-        print("Calculator closed!")
-        break
+if __name__ == "__main__":
+    while True:
+        expression = input("\nEnter expression: ").strip()
 
-    try:
-        result = evaluate_expression(expression)
-        print("Result =", result)
+        if expression.lower() == "exit":
+            print("Calculator closed!")
+            break
 
-    except ZeroDivisionError:
-        print("Error: Division by zero!")
+        try:
+            result = evaluate_expression(expression)
+            print("Result =", result)
 
-    except (SyntaxError, ValueError, TypeError, OverflowError):
-        print("Invalid expression or unsupported operation!")
+        except ZeroDivisionError:
+            print("Error: Division by zero!")
 
-    except Exception:
-        print("Something went wrong!")
+        except (
+            SyntaxError,
+            ValueError,
+            TypeError,
+            OverflowError,
+        ):
+            print("Invalid expression or unsupported operation!")
 
+        except Exception:
+            print("Something went wrong!")
